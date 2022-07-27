@@ -22,14 +22,22 @@ public Login () {
 		@FindBy (id="login")
 		private WebElement loginbtn;
 
+		BaseClass BaseClass = new BaseClass ();
+		
+		public void logIn () throws Throwable {
+			
+			String username = BaseClass.getDataFromExcel("C:\\Users\\SAN\\eclipse-workspace\\framework\\testdata\\hotel book.xlsx", "Sheet1", 1, 0);
+				BaseClass.sendKey(usernametxtfld, username);
+				
+				String passWord = BaseClass.getDataFromExcel("C:\\Users\\SAN\\eclipse-workspace\\framework\\testdata\\hotel book.xlsx", "Sheet1", 2, 0);
+				BaseClass.sendKey(passwordtxtfld, passWord);
+				
+				BaseClass.click(loginbtn);
+		}
 
-		public void logindata (String username , String password) {
-			sendKey(usernametxtfld, username);
-			sendKey(passwordtxtfld, password);
-			click(loginbtn);
 			
 
-		}}
+		}
 
 		
 		

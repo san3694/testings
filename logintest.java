@@ -11,11 +11,10 @@ public class logintest {
 
 	public static void main(String[] args) throws Throwable {
 		
-		BaseClass.getDriver("edge");
+		BaseClass.getDriver("chrome");
 		BaseClass.launchUrl("https://adactinhotelapp.com/");
 		Login Login =new Login();
-		Login.logindata("sansansan", "Santhan@36");
-		
+		Login.logIn();
 		SearchHotel SearchHotel = new SearchHotel ();
 		SearchHotel.searchFill();
 		selecthotel selecthotel = new selecthotel ();
@@ -25,7 +24,6 @@ public class logintest {
 		BookHotel.printid();
 		
 		
-		SearchHotel.getLocationDd().click();
 	}
 	
 	

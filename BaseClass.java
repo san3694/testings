@@ -171,10 +171,10 @@ public class BaseClass  {
 	public void alertDataPass (WebElement ele , String data) {
 		driver.switchTo().alert().sendKeys(data);
 	}
-		public String getDataFromExcel(String pathname, String sheetName, int rowNo, int cellNo) throws Throwable {
+		public String getDataFromExcel(String pathlocation, String sheetName, int rowNo, int cellNo) throws Throwable {
 			String value = null;
 			try {
-			File file = new File (pathname);
+			File file = new File (pathlocation);
 			FileInputStream fileinput = new FileInputStream(file);
 			Workbook book = new XSSFWorkbook(fileinput);
 			Sheet sheet = book.getSheet(sheetName);
@@ -212,9 +212,22 @@ public class BaseClass  {
 				s.selectByIndex(no);
 		
 			}
-				
-				
-				
+			
+			public String getDataToExcel(String pathlocation, String sheetName, int rowNo, int cellNo, String valueInput) throws Throwable {
+				String value = null;
+				try {
+				File file = new File (pathlocation);
+				FileInputStream fileinput = new FileInputStream(file);
+				Workbook book = new XSSFWorkbook(fileinput);
+				Sheet sheet = book.getSheet(sheetName);
+				Row row = sheet.getRow(rowNo);
+				Cell cell = row.getCell(cellNo);
+				cell.setCellValue(valueInput);}
+				catch (Exception e) {
+				}
+				return value;}
+			
+			
 				
 				
 				

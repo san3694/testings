@@ -1,5 +1,13 @@
 package org.framework;
 
+import java.io.File;
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -60,10 +68,27 @@ public class BookHotel extends BaseClass{
 	
 
 
-	public void printid() throws Exception {
+	public void printid() throws Throwable {
 		Thread.sleep(5000);
-		String data = ordernoGet.getAttribute("value");
-System.out.println(data);
+		//String data = ordernoGet.getAttribute("value");
+		//		System.out.println(data);
+				
+				BaseClass BaseClass = new BaseClass ();
+				//String dataToExcel = BaseClass.getDataToExcel("C:\\Users\\SAN\\eclipse-workspace\\framework\\testdata\\hotel book.xlsx", "Sheet1", 10, 0,data );
+
+				File file = new File ("C:\\Users\\SAN\\eclipse-workspace\\framework\\testdata\\hotel book.xlsx");
+				FileInputStream fileinput = new FileInputStream(file);
+				Workbook book = new XSSFWorkbook(fileinput);
+				Sheet sheet = book.getSheet("Sheet1");
+				Row row = sheet.getRow(10);
+				Cell cell = row.getCell(0);
+				String data = ordernoGet.getAttribute("value");
+				System.out.println(data);
+				cell.setCellValue(data);			
+				
+				
+
+
 	}
 
 }
